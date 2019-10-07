@@ -1,11 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
-import 'semantic-ui-css/semantic.min.css'
+import FriendList from './components/FriendList';
+import { connect } from 'react-redux';
+import { getFriends } from './actions';
 
-function App() {
+import 'semantic-ui-css/semantic.min.css';
+
+function App(props) {
   return (
- 
+    <FriendList friends={props.friends} getFriends={props.getFriends} />
   );
 }
-
-export default App;
+const mapStateToProps = state => ({
+  friends: state.friends,
+  error: state.error,
+  isLoading: state.isLoading
+})
+export default connect(mapStateToProps, { getFriends })(App);
