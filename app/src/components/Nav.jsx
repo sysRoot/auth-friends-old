@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { Menu, Segment } from "semantic-ui-react";
+import { Menu } from "semantic-ui-react";
 
 const Nav = props => {
     const [active, setActive] = useState("home");
 
-    handleItemClick = (e, { name }) => setActive({ activeItem: name });
+    const handleItemClick = (e, { name }) => setActive({ activeItem: name });
 
-    const { activeItem } = this.state;
+    const { activeItem } = active;
 
     return (
         <div>
@@ -14,25 +14,21 @@ const Nav = props => {
                 <Menu.Item
                     name="home"
                     active={activeItem === "home"}
-                    onClick={this.handleItemClick}
+                    onClick={handleItemClick}
                 />
                 <Menu.Item
                     name="friends"
                     active={activeItem === "friends"}
-                    onClick={this.handleItemClick}
+                    onClick={handleItemClick}
                 />
                 <Menu.Menu position="right">
                     <Menu.Item
-                        name={isLoggedIn}
+                        name={!props.isLoggedIn ? 'Login' : 'Logout' }
                         active={activeItem === "login"}
-                        onClick={this.handleItemClick}
+                        onClick={handleItemClick}
                     />
                 </Menu.Menu>
             </Menu>
-
-            <Segment>
-                <img src="/images/wireframe/media-paragraph.png" />
-            </Segment>
         </div>
     );
 };
